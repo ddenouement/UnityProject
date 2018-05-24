@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ground
+  - Background image
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FarBackg
+    uniqueID: 306203603
+    locked: 0
+  - name: NearBackg
+    uniqueID: 966451145
+    locked: 0
+  - name: Platform
+    uniqueID: 2698771441
+    locked: 0
+  - name: Player
+    uniqueID: 1095986383
     locked: 0
