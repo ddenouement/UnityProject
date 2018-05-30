@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class HeroRabbitGood : MonoBehaviour
 {
+    public bool big = false;
+    public bool isDead = false;
 
     public float speed = 1;
     bool isGrounded = false;  
     public float bigTime = 0;
     float jumpTime = 0f;
     bool jumpActive = false;
+    public float durationOfRedColor = 4f;
+    private float tim = 2;
+    bool  Red = false;
 
     public float maxBigTime = 8f;
     public float maxJumpTime = 2f;
      public float jumpSpeed = 2f;
     Rigidbody2D myBody = null;
     SpriteRenderer myBodyRenderer = null;
-  
+    Transform heroParent = null;
     Animator myAnimator = null;
      
     public static HeroRabbitGood current = null; 
@@ -29,6 +34,7 @@ public class HeroRabbitGood : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        heroParent = this.transform.parent;
         myBody = this.GetComponent<Rigidbody2D>();
         myBodyRenderer = this.GetComponent<SpriteRenderer>();
           myAnimator = this.GetComponent<Animator>();
@@ -41,7 +47,27 @@ public class HeroRabbitGood : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       
+         if (isDead) return;//revive();
+        if (big){
+            bigTime -= Time.deltaTime;
+            if (bigTime <= 0)
+            {
+                big = false;
+                this.transform.localScale -= new Vector3(0.5f, 0.5f, 0); }
+             
+        }
+   //     if (!Red) myBodyRenderer.material.color = Color.Lerp(Color.white, Color.white, tim);
+      if(Red)  myBodyRenderer.material.color = Color.Lerp(Color.red, Color.white, tim);
+        if (tim < 1)
+        {
+            tim += Time.deltaTime / durationOfRedColor;
+            Red = true;
+        }
+        else { Red = false; }
+
+
+
+
         Vector3 from = this.transform.position + Vector3.up * 0.3f;
         Vector3 to = this.transform.position + Vector3.down * 0.01f;
         int layer_id = 1 << LayerMask.NameToLayer("Ground");  
@@ -51,7 +77,15 @@ public class HeroRabbitGood : MonoBehaviour
         {
             isGrounded = true;
             myAnimator.SetBool("jump", false); 
-            
+            //щоб прилипнути до платформи коли ми на ній
+            if (hit.transform != null && hit.transform.GetComponent<MovingPlatform>() != null)
+            {
+                SetNewParent(this.transform, hit.transform);
+            }
+            else//відлипнути
+            {
+                SetNewParent(this.transform, this.heroParent);
+            }
         }
         else
         {
@@ -100,7 +134,8 @@ public class HeroRabbitGood : MonoBehaviour
         }
         else
         {
-            myAnimator.SetBool("run", false); 
+            myAnimator.SetBool("run", false);
+          //  myBody.velocity = new Vector2(0.0f, 0.0f); 
 
         }
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
@@ -112,17 +147,50 @@ public class HeroRabbitGood : MonoBehaviour
         {
             sr.flipX = false;
         }
+        
+
+
     }
 
      
 
     public void death()
     {
-         
+        isDead = true;
         myAnimator.SetBool("death", true);
+  //          myAnimator.Play("DieAnim");
+ //        revive();
+    }
+    public void revive()
+    {
+       isDead = false;
+        myAnimator.SetBool("death", false);
+ 
+    }
+    static void SetNewParent(Transform obj, Transform NewParent)
+    {
+        if (obj.transform.parent != NewParent)
+        {
+            Vector3 pos = obj.transform.position;
+            obj.transform.parent = NewParent;
+            obj.transform.position = pos;
+        }
+    }
+    public void mushEaten(){
+        Debug.Log("big");
+        this.transform.localScale += new Vector3(0.5f, 0.5f, 0);//enlarge 	
+        this.big = true;
+        bigTime = maxBigTime;
+    }
+    public bool isRed()
+    {
+        return Red;
+    }
+    public void changeColor()
+    {
+        tim = 0;
         
     }
-
     
 
 }
