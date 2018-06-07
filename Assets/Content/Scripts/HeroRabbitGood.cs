@@ -7,6 +7,7 @@ public class HeroRabbitGood : MonoBehaviour
     public bool big = false;
     public bool isDead = false;
 
+
     public float speed = 1;
     bool isGrounded = false;  
     public float bigTime = 0;
@@ -23,12 +24,12 @@ public class HeroRabbitGood : MonoBehaviour
     SpriteRenderer myBodyRenderer = null;
     Transform heroParent = null;
     Animator myAnimator = null;
-     
+    public static HeroRabbitGood lastRabbit = null;
     public static HeroRabbitGood current = null; 
 
     void Awake()
-    {
-        current = this;
+    {    current = this;
+        lastRabbit = this;
     }
 
     // Use this for initialization
@@ -80,6 +81,7 @@ public class HeroRabbitGood : MonoBehaviour
             //щоб прилипнути до платформи коли ми на ній
             if (hit.transform != null && hit.transform.GetComponent<MovingPlatform>() != null)
             {
+                 Debug.Log("new parent");
                 SetNewParent(this.transform, hit.transform);
             }
             else//відлипнути
@@ -191,6 +193,16 @@ public class HeroRabbitGood : MonoBehaviour
         tim = 0;
         
     }
-    
+    public void doJump()
+    {
+        this.jumpActive = true;
+        this.jumpTime += Time.deltaTime;
+        if (this.jumpTime < this.maxJumpTime)
+        {
+            Vector2 velocity = myBody.velocity;
+            velocity.y = jumpSpeed * (1.0f - jumpTime / maxJumpTime);
+            myBody.velocity = velocity;
+        }
+    }
 
 }
