@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectableFruit : Collectable {
+public class RedLineCrystals : CrystalManager {
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +13,4 @@ public class CollectableFruit : Collectable {
 	void Update () {
 		
 	}
-    protected override void OnRabbitHit(HeroRabbitGood rab)
-    {
-        this.CollectedHide();
-    }
 }

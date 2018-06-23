@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectableCoin : Collectable  {
+public class CollectableCrystal : Collectable {
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +13,15 @@ public class CollectableCoin : Collectable  {
 	void Update () {
 		
 	}
+    public string c;
+    bool hidden = false;
     protected override void OnRabbitHit(HeroRabbitGood rab)
     {
-        this.CollectedHide();
+        if (!hidden)
+        {
+            LevelController.current.addCrystal(rab, c);
+            this.CollectedHide();
+            hidden = true;
+        }
     }
 }

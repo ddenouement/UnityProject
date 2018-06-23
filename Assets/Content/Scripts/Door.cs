@@ -5,7 +5,8 @@ using UnityEngine;
 public enum Level
 {
     Level1,
-    Level2 
+    Level2,
+    ChooseLevel
 }
 public class Door : MonoBehaviour {
 
@@ -26,13 +27,27 @@ string scene = null;
 			} else if (level == Level.Level2 ) {
 				scene = "Level2"; 
 			}
+          else if (level == Level.ChooseLevel)
+          {
+              scene = "ChooseLevel"; 
+
+          }
  
 	}
 
-	void OnTriggerEnter2D (Collider2D collider) { 
+	void OnTriggerEnter2D (Collider2D collider) {
+       
 		HeroRabbitGood rabbit = collider.GetComponent<HeroRabbitGood> ();
-		if (rabbit != null) {			 
-				SceneManager.LoadScene (scene);
+		if (rabbit != null) {
+            if (LevelController.current != null)
+            {
+                if (LevelController.current.level == Level.Level1 || LevelController.current.level == Level.Level2)
+                {
+                    LevelController.current.onWin();
+                    //  Debug.Log("here");
+                }
+            }
+            else SceneManager.LoadScene(scene);
 		} 
 	}
      
