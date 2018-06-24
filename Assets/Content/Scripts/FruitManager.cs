@@ -7,8 +7,14 @@ public class FruitManager : MonoBehaviour {
 	public SpriteRenderer[] fruits = null;
 	List<int> gathered = null;
 	void Awake () {
-       gathered = JsonUtility.FromJson<LevelStat>(PlayerPrefs.GetString("Level1stats")).collectedFruits;
-		//add to the fruitmanager in inspector
+        if (LevelController.current.level == Level.Level1)
+            gathered = JsonUtility.FromJson<LevelStat>(PlayerPrefs.GetString("Level1stats")).collectedFruits;
+        else
+        {
+            gathered = JsonUtility.FromJson<LevelStat>(PlayerPrefs.GetString("Level2stats")).collectedFruits;
+       
+        }
+        //add to the fruitmanager in inspector
         fruits = this.GetComponentsInChildren<SpriteRenderer>();
 		StartCoroutine(hide ());
 	}

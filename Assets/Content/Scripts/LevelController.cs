@@ -49,7 +49,8 @@ public class LevelController : MonoBehaviour {
     }
     void Awake()
     {
-        current = this; 
+        current = this;
+   //     PlayerPrefs.DeleteAll();
        string str = PlayerPrefs.GetString(levelName() + "stats", null);
        this.stats = JsonUtility.FromJson<LevelStat>(str);
        if (this.stats == null)
@@ -58,7 +59,8 @@ public class LevelController : MonoBehaviour {
        }
        fruits = stats.collectedFruits.Count;
        overallfruits = FindObjectsOfType<CollectableFruit>().Length;
-
+       fruitsLabel.text = fruits + "/" + overallfruits;
+       coinsLabel.text =  ""+PlayerPrefs.GetInt("coins");
 
     }
 	// Update is called once per frame
