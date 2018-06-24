@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class HeroRabbitGood : MonoBehaviour
 {
+    public AudioClip runSound = null;
+    public AudioClip dieSound = null;
+    public AudioClip groundingSound = null;
+    protected AudioSource runSource = null;
+    protected AudioSource dieSource = null;
+    protected AudioSource groundingSource = null;
+
     public bool big = false;
     public bool isDead = false;
    public bool isPaused;
@@ -42,7 +49,14 @@ public class HeroRabbitGood : MonoBehaviour
           myAnimator = this.GetComponent<Animator>();
         if (LevelController.current)
             LevelController.current.setStartPosition(this.transform.position);
-        
+
+        runSource = gameObject.AddComponent<AudioSource>();
+        runSource.clip = runSound;
+        runSource.loop = true;
+        dieSource = gameObject.AddComponent<AudioSource>();
+        dieSource.clip = dieSound;
+        groundingSource = gameObject.AddComponent<AudioSource>();
+        groundingSource.clip = groundingSound;
        
     }
 
@@ -82,7 +96,17 @@ public class HeroRabbitGood : MonoBehaviour
             if (hit)
             {
                 isGrounded = true;
+                if (myAnimator.GetBool("jump"))
+                {
+                    if (SoundController.soundControls.sound)
+                    {
+                        groundingSource.Play();
+                        runSource.Play();
+                    } 
+                }
                 myAnimator.SetBool("jump", false);
+                 
+
                 //щоб прилипнути до платформи коли ми на ній
                 if (hit.transform != null && hit.transform.GetComponent<MovingPlatform>() != null)
                 {
@@ -99,9 +123,10 @@ public class HeroRabbitGood : MonoBehaviour
                 isGrounded = false;
 
                 myAnimator.SetBool("jump", true);
+                runSource.Stop();
 
             }
-            Debug.DrawLine(from, to, Color.red);
+         // Debug.DrawLine(from, to, Color.red);
 
             if (Input.GetButton("Jump") && isGrounded)
             {
@@ -125,6 +150,7 @@ public class HeroRabbitGood : MonoBehaviour
                 {
                     this.jumpActive = false;
                     this.jumpTime = 0;
+                    
                 }
             }
 
@@ -138,12 +164,16 @@ public class HeroRabbitGood : MonoBehaviour
                 Vector2 vel = myBody.velocity;
                 vel.x = value * speed;
                 myBody.velocity = vel;
+
+                if ((isGrounded && !jumpActive) && SoundController.soundControls.sound)
+				runSource.Play ();
             }
             else
             {
                 myAnimator.SetBool("run", false);
              if(isGrounded&&!jumpActive) myBody.velocity = new Vector2(0.0f, 0.0f); 
-
+                
+			           runSource.Stop ();
             }
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (value < 0)
@@ -163,6 +193,7 @@ public class HeroRabbitGood : MonoBehaviour
 
     public void death()
     {
+        if (SoundController.soundControls.sound) dieSource.Play();
         isDead = true;
         myAnimator.SetBool("death", true);
   //          myAnimator.Play("DieAnim");

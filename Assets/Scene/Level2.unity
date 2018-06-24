@@ -1102,6 +1102,21 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 338ab939a4bba4046862bede6df94d8e, type: 2}
+    - target: {fileID: 114246895240809446, guid: 33b368c04390cdc49a7bd35e81b181f8,
+        type: 2}
+      propertyPath: dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7553580dee44e4f96b2efa5f4e5e17c3, type: 3}
+    - target: {fileID: 114246895240809446, guid: 33b368c04390cdc49a7bd35e81b181f8,
+        type: 2}
+      propertyPath: runSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d024189a711c440997b2d9f341c8dd0, type: 3}
+    - target: {fileID: 114246895240809446, guid: 33b368c04390cdc49a7bd35e81b181f8,
+        type: 2}
+      propertyPath: groundingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4678dc960a2b949329a55d696cf4ec68, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33b368c04390cdc49a7bd35e81b181f8, type: 2}
   m_IsPrefabParent: 0

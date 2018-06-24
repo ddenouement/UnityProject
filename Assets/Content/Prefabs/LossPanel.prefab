@@ -739,6 +739,7 @@ MonoBehaviour:
   rest: {fileID: 114910422133892464}
   cm: {fileID: 114718209987899830}
   closeButton: {fileID: 114325140544913006}
+  sound: {fileID: 8300000, guid: 98a18c22aef5542858a6eaf886ac253a, type: 3}
 --- !u!114 &114325140544913006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1161,7 +1162,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 1442
   mHeight: 508
-  mDepth: 1
+  mDepth: 5
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0

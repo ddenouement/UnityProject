@@ -10,7 +10,9 @@ public class WinPanel : MonoBehaviour
     public UILabel coins = null;
     public UILabel fruits = null;
     public CrystalManager cm = null;
-  
+
+    public AudioClip sound = null;
+    AudioSource soundSource = null;
     public MyButton closeButton = null;
  //   public HeroRabbitGood rabb = null;
     //chooselevel,restart,how many crystals
@@ -25,7 +27,10 @@ public class WinPanel : MonoBehaviour
         fruits.text = LevelController.current.getFruits() + "/" + LevelController.current.getMaxFruits();
      
       showCrystals() ;
-	
+      soundSource = gameObject.AddComponent<AudioSource>();
+      soundSource.clip = sound;
+      if (SoundController.soundControls.sound) soundSource.Play();
+   
     }
      private void showCrystals()
      {

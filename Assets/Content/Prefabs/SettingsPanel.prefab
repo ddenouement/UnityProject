@@ -116,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4272589285477304
 Transform:
   m_ObjectHideFlags: 1
@@ -124,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1547520945353514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: 16, z: 0}
+  m_LocalPosition: {x: -2705, y: -12050, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4670736225992892}
@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1963852563969778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 486, y: 17, z: 0}
+  m_LocalPosition: {x: 135, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4272589285477304}
@@ -178,7 +178,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082853906657762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -377, y: 0, z: 0}
+  m_LocalPosition: {x: -129, y: -18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4617600476591684}
@@ -538,6 +538,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 114761414593445968}
   rabb: {fileID: 0}
+  soundBtn: {fileID: 114803116524916656}
+  musicBtn: {fileID: 114915312287478688}
+  sBtn: {fileID: 114098623874428048}
+  mBtn: {fileID: 114968379363235562}
+  soundOn: {fileID: 21300000, guid: 9d51c550af7f042448b0d69bc8f39958, type: 3}
+  soundOff: {fileID: 21300000, guid: a96b3c306d8f54d59992608610fa8420, type: 3}
+  musicOn: {fileID: 21300000, guid: f0cf33b7ce34e41798c3899a84839cbd, type: 3}
+  musicOff: {fileID: 21300000, guid: 05d63ac62d0544d53a2005d0ceb838ea, type: 3}
 --- !u!114 &114603215211842104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -723,21 +731,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftAnchor:
-    target: {fileID: 0}
-    relative: 0.5
-    absolute: 4104
+    target: {fileID: 4670736225992892}
+    relative: 0
+    absolute: 77
   rightAnchor:
-    target: {fileID: 0}
+    target: {fileID: 4670736225992892}
     relative: 0.5
-    absolute: 5078
+    absolute: 29
   bottomAnchor:
-    target: {fileID: 0}
-    relative: 0.5
-    absolute: 2254
+    target: {fileID: 4670736225992892}
+    relative: 0
+    absolute: 504
   topAnchor:
-    target: {fileID: 0}
+    target: {fileID: 4670736225992892}
     relative: 0.5
-    absolute: 2786
+    absolute: 414
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4

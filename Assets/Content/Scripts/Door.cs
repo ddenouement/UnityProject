@@ -9,7 +9,7 @@ public enum Level
     ChooseLevel
 }
 public class Door : MonoBehaviour {
-
+    
     public Level level;
 string scene = null;
 
@@ -19,19 +19,34 @@ string scene = null;
 
 	public Sprite crystal = null;
 	public Sprite fruit = null;
+    public Sprite check = null;
 
 	// Use this for initialization
 	void Start () { 
-		  if (level == Level.Level1) {
+	/*	  if (level == Level.Level1) {
 				scene = "Level1"; 
 			} else if (level == Level.Level2 ) {
 				scene = "Level2"; 
-			}
-          else if (level == Level.ChooseLevel)
+			}*/
+            if (level == Level.ChooseLevel)
           {
               scene = "ChooseLevel"; 
 
           }
+          if (level == Level.Level1 || level == Level.Level2)
+          { 
+			LevelStat stats1 = JsonUtility.FromJson<LevelStat>(PlayerPrefs.GetString ("Level1stats"));
+			LevelStat stats2 = JsonUtility.FromJson<LevelStat>(PlayerPrefs.GetString ("Level2stats"));
+			Debug.Log (PlayerPrefs.GetString ("Level1stats"));
+			if (level == Level.Level1) {
+				scene = "Level1";
+				createDoor (stats1);
+                //щоб не зайшов 
+			} else if (level == Level.Level2 && stats1.levelCompleted) {
+				scene = "Level2";
+				createDoor (stats2);
+			}
+		} 
  
 	}
 
@@ -50,5 +65,22 @@ string scene = null;
             else SceneManager.LoadScene(scene);
 		} 
 	}
+    void createDoor(LevelStat stats)
+    {
+        if (stats != null)
+        {
+            if (stats.hasCrystals)
+            {
+                doorCrystal.sprite = crystal; 
+            }
+            if (stats.hasAllFruits)
+            {
+                doorFruit.sprite = fruit;
+             }
+            if (stats.levelCompleted)
+                doorChecked.sprite = check;
+
+        }
+    }
      
 }

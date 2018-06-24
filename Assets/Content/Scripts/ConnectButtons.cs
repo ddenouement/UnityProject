@@ -11,7 +11,7 @@ public class ConnectButtons : MonoBehaviour {
 
     void Awake()
     {
-        playBtn.signalOnClick.AddListener(this.PlayBtnClicked);// Debug.Log("play");
+        playBtn.signalOnClick.AddListener(this.PlayBtnClicked);  Debug.Log("play");
        
         settings.signalOnClick.AddListener(this.SettingsClicked);
 		

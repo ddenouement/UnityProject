@@ -1441,6 +1441,7 @@ MonoBehaviour:
   coins: {fileID: 114288088587630926}
   fruits: {fileID: 114301786938625048}
   cm: {fileID: 114369757333802362}
+  sound: {fileID: 8300000, guid: dee792aa118e04f4f93fb651e2693ac9, type: 3}
   closeButton: {fileID: 114975041222859922}
 --- !u!114 &114852499273274340
 MonoBehaviour:

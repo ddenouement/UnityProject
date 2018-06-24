@@ -11,6 +11,8 @@ public class LossPanel : MonoBehaviour {
     public CrystalManager cm = null;
 
     public MyButton closeButton = null;
+    public AudioClip sound = null;
+    AudioSource soundSource = null;
     //   public HeroRabbitGood rabb = null;
     //chooselevel,restart,how many crystals
     void Awake()
@@ -22,6 +24,9 @@ public class LossPanel : MonoBehaviour {
         closeButton.signalOnClick.AddListener(this.close);
      showCrystals();
 
+     soundSource = gameObject.AddComponent<AudioSource>();
+     soundSource.clip = sound;
+     if (SoundController.soundControls.sound)  soundSource.Play();
     }
     private void showCrystals()
     {
