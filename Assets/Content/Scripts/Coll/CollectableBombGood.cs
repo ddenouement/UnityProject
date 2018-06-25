@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class CollectableBombGood : Collectable {
 
+    public AudioClip  Sound = null;
+    public AudioSource  Source = null;
 	// Use this for initialization
 	void Start () {
-		
+
+        Source = gameObject.AddComponent<AudioSource>();
+         Source.clip =  Sound;
 	}
 	
 	// Update is called once per frame
@@ -14,7 +18,7 @@ public class CollectableBombGood : Collectable {
 		
 	}
     protected override void OnRabbitHit(HeroRabbitGood rab){
-
+          Source.Play();
  	       if (rab.big) {
 		//	rab.big = false;
             rab.bigTime = 0;

@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class CollectableCoin : Collectable  {
 
-	// Use this for initialization
-	void Start () {
-		
+    public AudioClip Sound = null;
+    public AudioSource Source = null;
+    // Use this for initialization
+    void Start()
+    {
+
+        Source = gameObject.AddComponent<AudioSource>();
+        Source.clip = Sound;
 	}
 	
 	// Update is called once per frame
@@ -16,7 +21,7 @@ public class CollectableCoin : Collectable  {
     protected override void OnRabbitHit(HeroRabbitGood rab)
     {
         LevelController.current.addCoins(1);
-		
+        Source.Play();
         this.CollectedHide();
         
     }

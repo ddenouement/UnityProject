@@ -7,6 +7,11 @@ public class RedOrc : MonoBehaviour {
     public GameObject carrprefab;
     float lastCarrot = 0;
 
+    public AudioClip runSound = null;
+    public AudioClip dieSound = null;
+     protected AudioSource runSource = null;
+    protected AudioSource dieSource = null;
+    
     public float minDistanceToAttack = 5;
     public float minIntervalToAttack = 1f;
     enum Mode
@@ -35,6 +40,12 @@ public class RedOrc : MonoBehaviour {
 
         pointA = this.transform.position;
         pointB = pointA + diff;
+
+        runSource = gameObject.AddComponent<AudioSource>();
+        runSource.clip = runSound;
+        runSource.loop = true;
+        dieSource = gameObject.AddComponent<AudioSource>();
+        dieSource.clip = dieSound; 
     }
 
     // Update is called once per frame
@@ -139,6 +150,12 @@ public class RedOrc : MonoBehaviour {
             //do jump
             rabbit.doJump();
             this.death();
+            if (SoundController.soundControls.sound)
+            {
+            //    Debug.Log(SoundController.soundControls.sound);
+                dieSource.Play();
+               
+            } 
         }
         else
             LevelController.current.onRabbitDeath(rabbit);

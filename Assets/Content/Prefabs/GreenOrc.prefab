@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 61595443323140020}
   - component: {fileID: 95769510670965966}
   - component: {fileID: 114496361177868014}
+  - component: {fileID: 70477022906783636}
+  - component: {fileID: 70616165540634176}
   m_Layer: 0
   m_Name: GreenOrc
   m_TagString: Untagged
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1226720935555442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.77, y: -0.09, z: 0}
+  m_LocalPosition: {x: 11.63, y: -9.2, z: 0}
   m_LocalScale: {x: 1.5954468, y: 1.5670928, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +61,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 338ab939a4bba4046862bede6df94d8e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -76,7 +78,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.062467664, y: 0.83366704}
+  m_Offset: {x: -0.052112997, y: 0.5220959}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -87,8 +89,38 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1446712, y: 1.3738036}
+  m_Size: {x: 1.0927619, y: 0.75066113}
   m_EdgeRadius: 0
+--- !u!70 &70477022906783636
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226720935555442}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1, y: 1.05}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
+--- !u!70 &70616165540634176
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226720935555442}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.7}
+  m_Size: {x: 1.2, y: 1}
+  m_Direction: 0
 --- !u!95 &95769510670965966
 Animator:
   serializedVersion: 3
@@ -117,9 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b84fb30cec214a429c3e5814f1d2119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 0da0a61767f664de1a8b3e03d7ca4d4e, type: 3}
   pointA: {x: 0, y: 0, z: 0}
   pointB: {x: 0, y: 0, z: 0}
-  diff: {x: 5, y: 0, z: 0}
+  diff: {x: 3, y: 0, z: 0}
+  orcBody: {fileID: 0}
+  orcBodyRenderer: {fileID: 0}
+  AnimController: {fileID: 0}
+  dead: 0
 --- !u!212 &212020063101848606
 SpriteRenderer:
   m_ObjectHideFlags: 1

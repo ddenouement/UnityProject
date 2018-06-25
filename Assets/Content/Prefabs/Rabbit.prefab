@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1776532941039202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.99, y: 5.8, z: 0}
+  m_LocalPosition: {x: -17.18, y: 5.33, z: 0}
   m_LocalScale: {x: 2.1548328, y: 2.1604762, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,11 +59,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 338ab939a4bba4046862bede6df94d8e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61478994363628260
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -76,7 +76,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0011072159, y: 0.6921259}
+  m_Offset: {x: -0.006792344, y: 0.6921259}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -87,7 +87,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8489536, y: 1.2474194}
+  m_Size: {x: 0.39079243, y: 1.2474194}
   m_EdgeRadius: 0
 --- !u!95 &95547382177150406
 Animator:
@@ -117,8 +117,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23a559ca1810894eb651a46abcad1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runSound: {fileID: 8300000, guid: 0d024189a711c440997b2d9f341c8dd0, type: 3}
+  dieSound: {fileID: 8300000, guid: 7553580dee44e4f96b2efa5f4e5e17c3, type: 3}
+  groundingSound: {fileID: 8300000, guid: 4678dc960a2b949329a55d696cf4ec68, type: 3}
+  backSound: {fileID: 8300000, guid: 57a5b2120c2d04fa9bcb5b2e99ee9361, type: 3}
+  backSource: {fileID: 0}
+  big: 0
+  isDead: 0
+  isPaused: 0
   speed: 3
   bigTime: 0
+  durationOfRedColor: 4
   maxBigTime: 8
   maxJumpTime: 2
   jumpSpeed: 4
@@ -152,7 +161,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1095986383
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 32fb16d5004e34a858807d4f975419f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -6,8 +6,14 @@ public class CollectableFruit : Collectable {
 
     public int n=0;
     public bool hidden = false;
-	// Use this for initialization
-	void Start () {
+    public AudioClip Sound = null;
+    public AudioSource Source = null;
+    // Use this for initialization
+    void Start()
+    {
+
+        Source = gameObject.AddComponent<AudioSource>();
+        Source.clip = Sound;
 		
 	}
 	
@@ -19,6 +25,7 @@ public class CollectableFruit : Collectable {
     {
         if (!hidden)
         {
+            Source.Play();
             LevelController.current.addFruits(n);
             this.CollectedHide();
            // hidden = true;

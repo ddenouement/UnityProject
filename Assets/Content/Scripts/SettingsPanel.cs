@@ -22,8 +22,9 @@ public class SettingsPanel : MonoBehaviour {
          closeButton.signalOnClick.AddListener( this.close );
         rabb = GetComponent<HeroRabbitGood>();    
      	soundBtn.signalOnClick.AddListener (this.on_sound);
-        musicBtn.signalOnClick.AddListener(this.on_music);
-
+       // musicBtn.signalOnClick.AddListener(this.on_music);
+  soundBtn.enabled = true;
+  musicBtn.enabled = true;
 		sound = (SoundController.soundControls.sound);
         music = (SoundController.soundControls.music);
 

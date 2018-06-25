@@ -10,6 +10,9 @@ public class HeroRabbitGood : MonoBehaviour
     protected AudioSource runSource = null;
     protected AudioSource dieSource = null;
     protected AudioSource groundingSource = null;
+    public AudioClip backSound = null;
+    public AudioSource backSource = null;
+   
 
     public bool big = false;
     public bool isDead = false;
@@ -57,13 +60,25 @@ public class HeroRabbitGood : MonoBehaviour
         dieSource.clip = dieSound;
         groundingSource = gameObject.AddComponent<AudioSource>();
         groundingSource.clip = groundingSound;
+
+      backSource = gameObject.AddComponent<AudioSource>();
+       backSource.clip = backSound;
+       backSource.loop = true;
+       if (SoundController.soundControls.music) backSource.Play();
+     
        
     }
+    public void playM()
+    {
+        if (!SoundController.soundControls.music) backSource.Stop();
+        if (SoundController.soundControls.music) backSource.Play();
+      
 
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isPaused)
+         if (!isPaused)
         {
             if (isDead) return;//revive();
             if (big)
@@ -98,11 +113,12 @@ public class HeroRabbitGood : MonoBehaviour
                 isGrounded = true;
                 if (myAnimator.GetBool("jump"))
                 {
-                    if (SoundController.soundControls.sound)
-                    {
+                  //  if (SoundController.soundControls.sound)
+                   // {
+                      //  Debug.Log(SoundController.soundControls.sound);
                         groundingSource.Play();
                         runSource.Play();
-                    } 
+                   // } 
                 }
                 myAnimator.SetBool("jump", false);
                  

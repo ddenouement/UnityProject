@@ -10,7 +10,9 @@ public class GreenOrc : MonoBehaviour {
         Attack
     }
         public static float speed = 1;
-
+        public AudioClip dieSound = null;
+         protected AudioSource dieSource = null;
+    
         public Vector3 pointA;
       public Vector3 pointB;
     public Vector3 diff = new Vector3(3, 0, 0);
@@ -27,7 +29,10 @@ public class GreenOrc : MonoBehaviour {
         orcBodyRenderer = this.GetComponent<SpriteRenderer>();
         AnimController = this.GetComponent<Animator>();
         pointA = this.transform.position;
-        pointB = pointA + diff;		
+        pointB = pointA + diff; 
+        dieSource = gameObject.AddComponent<AudioSource>();
+        dieSource.clip = dieSound;
+      
 	}
 	
 	// Update is called once per frame
@@ -155,6 +160,12 @@ public class GreenOrc : MonoBehaviour {
         {
             rabbit.doJump();
             die();
+            if (SoundController.soundControls.sound)
+            {
+              //  Debug.Log(SoundController.soundControls.sound);
+                dieSource.Play();
+                
+            } 
         }
 
         else LevelController.current.onRabbitDeath(rabbit);

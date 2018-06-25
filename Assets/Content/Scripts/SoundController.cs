@@ -28,7 +28,7 @@ public class SoundController {// : MonoBehaviour {
 		this.music = val;
         PlayerPrefs.SetInt("music", this.music ? 1 : 0);
         PlayerPrefs.Save();
-   
+        HeroRabbitGood.current.playM();
 		//update();
 	}
      
